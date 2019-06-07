@@ -1,5 +1,5 @@
-import pytest
 import marshmallow
+import pytest
 
 
 class PersonSchema(marshmallow.Schema):
