@@ -31,7 +31,7 @@ default_context:
     distribution_name:         'marshmallow-union'
     email:                     '2lSJlf2MCi6PIgNTboOp@cordaz.com'
     full_name:                 'akb'
-    github_username:           'githubuser'
+    github_username:           'adamboche'
     landscape:                 'no'
     license:                   'MIT license'
     linter:                    'flake8'
