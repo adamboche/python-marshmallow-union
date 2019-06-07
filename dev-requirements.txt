@@ -15,23 +15,18 @@ bump2version==0.5.10
 click==7.0                # via black, cuvner
 coverage==4.5.3
 cuvner==18.0.1
-entrypoints==0.3          # via flake8
 filelock==3.0.12          # via tox
-flake8-commas==2.0.0
-flake8==3.7.7
 importlib-metadata==0.17  # via pluggy, pytest
 incremental==17.5.0       # via cuvner
 isort==4.3.20             # via pylint
 lazy-object-proxy==1.4.1  # via astroid
-mccabe==0.6.1             # via flake8, pylint
+mccabe==0.6.1             # via pylint
 more-itertools==7.0.0     # via pytest
 packaging==19.0           # via pytest
 pathtools==0.1.2          # via watchdog
 pex==1.6.7
 pluggy==0.12.0            # via pytest, tox
 py==1.8.0                 # via pytest, tox
-pycodestyle==2.5.0        # via flake8
-pyflakes==2.1.1           # via flake8
 pygments==2.4.2           # via cuvner
 pylint==2.3.1
 pyparsing==2.4.0          # via packaging
