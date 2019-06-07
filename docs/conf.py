@@ -26,7 +26,7 @@ project = "marshmallow-union"
 year = "2019"
 author = "akb"
 copyright = "{0}, {1}".format(year, author)
-version = release = "0.1.0"
+version = release = "version = release = '0.1.1'"
 
 pygments_style = "trac"
 templates_path = ["."]
