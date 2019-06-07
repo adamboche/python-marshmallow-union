@@ -1,0 +1,12 @@
+coverage
+cuvner
+pytest
+tox
+versioneer
+flake8
+flake8-commas
+pylint
+# mypy
+black
+pex
+bump2version
