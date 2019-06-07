@@ -3,8 +3,7 @@ cuvner
 pytest
 tox
 versioneer
-flake8
-flake8-commas
+black
 pylint
 # mypy
 black

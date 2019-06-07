@@ -34,7 +34,7 @@ default_context:
     github_username:           'adamboche'
     landscape:                 'no'
     license:                   'MIT license'
-    linter:                    'flake8'
+    linter:                    'black'
     package_name:              'marshmallow_union'
     project_name:              'marshmallow-union'
     project_short_description: 'Union fields for marshmallow.'
