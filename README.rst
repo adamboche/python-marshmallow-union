@@ -35,7 +35,7 @@ Overview
 
 .. |version| image:: https://img.shields.io/pypi/v/marshmallow-union.svg
     :alt: PyPI Package latest release
-    :target: https://pypi.python.org/pypi/marshmallow-union
+    :target: https://pypi.org/pypi/marshmallow-union
 
 .. |commits-since| image:: https://img.shields.io/github/commits-since/adamboche/python-marshmallow-union/v0.1.1.svg
     :alt: Commits since latest release
@@ -43,15 +43,15 @@ Overview
 
 .. |wheel| image:: https://img.shields.io/pypi/wheel/marshmallow-union.svg
     :alt: PyPI Wheel
-    :target: https://pypi.python.org/pypi/marshmallow-union
+    :target: https://pypi.org/pypi/marshmallow-union
 
 .. |supported-versions| image:: https://img.shields.io/pypi/pyversions/marshmallow-union.svg
     :alt: Supported versions
-    :target: https://pypi.python.org/pypi/marshmallow-union
+    :target: https://pypi.org/pypi/marshmallow-union
 
 .. |supported-implementations| image:: https://img.shields.io/pypi/implementation/marshmallow-union.svg
     :alt: Supported implementations
-    :target: https://pypi.python.org/pypi/marshmallow-union
+    :target: https://pypi.org/pypi/marshmallow-union
 
 
 .. end-badges
