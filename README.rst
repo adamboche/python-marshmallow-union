@@ -21,25 +21,25 @@ Overview
     :alt: Documentation Status
 
 
-.. |travis| image:: https://travis-ci.org/githubuser/python-marshmallow-union.svg?branch=master
+.. |travis| image:: https://travis-ci.org/adamboche/python-marshmallow-union.svg?branch=master
     :alt: Travis-CI Build Status
-    :target: https://travis-ci.org/githubuser/python-marshmallow-union
+    :target: https://travis-ci.org/adamboche/python-marshmallow-union
 
-.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/githubuser/python-marshmallow-union?branch=master&svg=true
+.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/adamboche/python-marshmallow-union?branch=master&svg=true
     :alt: AppVeyor Build Status
-    :target: https://ci.appveyor.com/project/githubuser/python-marshmallow-union
+    :target: https://ci.appveyor.com/project/adamboche/python-marshmallow-union
 
-.. |codecov| image:: https://codecov.io/github/githubuser/python-marshmallow-union/coverage.svg?branch=master
+.. |codecov| image:: https://codecov.io/github/adamboche/python-marshmallow-union/coverage.svg?branch=master
     :alt: Coverage Status
-    :target: https://codecov.io/github/githubuser/python-marshmallow-union
+    :target: https://codecov.io/github/adamboche/python-marshmallow-union
 
 .. |version| image:: https://img.shields.io/pypi/v/marshmallow-union.svg
     :alt: PyPI Package latest release
     :target: https://pypi.python.org/pypi/marshmallow-union
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/githubuser/python-marshmallow-union/v0.1.0.svg
+.. |commits-since| image:: https://img.shields.io/github/commits-since/adamboche/python-marshmallow-union/v0.1.0.svg
     :alt: Commits since latest release
-    :target: https://github.com/githubuser/python-marshmallow-union/compare/v0.1.0...master
+    :target: https://github.com/adamboche/python-marshmallow-union/compare/v0.1.0...master
 
 .. |wheel| image:: https://img.shields.io/pypi/wheel/marshmallow-union.svg
     :alt: PyPI Wheel

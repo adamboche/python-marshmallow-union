@@ -40,7 +40,7 @@ setup(
     ),
     author='akb',
     author_email='2lSJlf2MCi6PIgNTboOp@cordaz.com',
-    url='https://github.com/githubuser/python-marshmallow-union',
+    url='https://github.com/adamboche/python-marshmallow-union',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
