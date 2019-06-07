@@ -1,5 +1,5 @@
-import pytest
 import marshmallow
+import pytest
 
 import marshmallow_union
 
