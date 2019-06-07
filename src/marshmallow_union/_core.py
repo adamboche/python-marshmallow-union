@@ -48,4 +48,3 @@ class Union(marshmallow.fields.Field):
             except marshmallow.exceptions.ValidationError as e:
                 errors.append(e.messages)
         raise marshmallow.exceptions.ValidationError(message=errors, field_name=attr)
-
