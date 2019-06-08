@@ -28,7 +28,7 @@ project = "marshmallow-union"
 year = "2019"
 author = "Adam Boche"
 copyright = "{0}, {1}".format(year, author)
-version = release = "version = release = 0.1.8"
+version = release = "0.1.8"
 
 pygments_style = "trac"
 templates_path = ["."]
@@ -53,4 +53,3 @@ napoleon_use_rtype = False
 napoleon_use_param = True
 
 autoapi_dirs = ["../src/marshmallow_union"]
-
