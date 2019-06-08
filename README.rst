@@ -37,9 +37,9 @@ Overview
     :alt: PyPI Package latest release
     :target: https://pypi.org/pypi/marshmallow-union
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/adamboche/python-marshmallow-union/v0.1.4.svg
+.. |commits-since| image:: https://img.shields.io/github/commits-since/adamboche/python-marshmallow-union/v0.1.5.svg
     :alt: Commits since latest release
-    :target: https://github.com/adamboche/python-marshmallow-union/compare/v0.1.4...master
+    :target: https://github.com/adamboche/python-marshmallow-union/compare/v0.1.5...master
 
 .. |wheel| image:: https://img.shields.io/pypi/wheel/marshmallow-union.svg
     :alt: PyPI Wheel
