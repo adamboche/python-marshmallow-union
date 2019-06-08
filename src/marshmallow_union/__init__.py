@@ -46,7 +46,7 @@ class Union(marshmallow.fields.Field):
 
         fields = self._candidate_fields
         if self._reverse_serialize_candidates:
-            fields = reversed(fields)
+            fields = list(reversed(fields))
 
         for candidate_field in fields:
             try:

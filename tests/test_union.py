@@ -8,6 +8,7 @@ import marshmallow_union
 
 class PersonSchema(marshmallow.Schema):
     """Schema with reverse candidates."""
+
     name = marshmallow.fields.String()
     number_or_numbers = marshmallow_union.Union(
         [
@@ -20,6 +21,7 @@ class PersonSchema(marshmallow.Schema):
 
 class OtherSchema(marshmallow.Schema):
     """Schema with forward candidates."""
+
     name = marshmallow.fields.String()
     number_or_numbers = marshmallow_union.Union(
         [
