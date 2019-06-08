@@ -6,6 +6,8 @@ import os
 
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+    "sphinx_autodoc_typehints",  # Must come *after* sphinx.ext.napoleon.
     "sphinx.ext.autosummary",
     "sphinx.ext.coverage",
     "sphinx.ext.doctest",
@@ -26,7 +28,7 @@ project = "marshmallow-union"
 year = "2019"
 author = "akb"
 copyright = "{0}, {1}".format(year, author)
-version = release = "version = release = 0.1.3"
+version = release = "version = release = 0.1.4"
 
 pygments_style = "trac"
 templates_path = ["."]
@@ -48,4 +50,6 @@ html_short_title = "%s-%s" % (project, version)
 
 napoleon_use_ivar = True
 napoleon_use_rtype = False
-napoleon_use_param = False
+napoleon_use_param = True
+
+autoapi_dirs = ["../src/marshmallow_union"]
