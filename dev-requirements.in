@@ -5,7 +5,11 @@ tox
 versioneer
 black
 pylint
-# mypy
-black
 pex
 bump2version
+docutils
+check-manifest
+readme-renderer
+pygments
+isort
+mypy
