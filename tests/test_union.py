@@ -1,3 +1,5 @@
+"""Tests for marshmallow_union."""
+
 import marshmallow
 import pytest
 
@@ -5,6 +7,8 @@ import marshmallow_union
 
 
 class PersonSchema(marshmallow.Schema):
+    """Schema with reverse candidates."""
+
     name = marshmallow.fields.String()
     number_or_numbers = marshmallow_union.Union(
         [
@@ -16,6 +20,8 @@ class PersonSchema(marshmallow.Schema):
 
 
 class OtherSchema(marshmallow.Schema):
+    """Schema with forward candidates."""
+
     name = marshmallow.fields.String()
     number_or_numbers = marshmallow_union.Union(
         [
@@ -35,6 +41,7 @@ class OtherSchema(marshmallow.Schema):
     ],
 )
 def test_round_trip(data, schema):
+    """Input, dump, load are all equal."""
     dumped = schema.dump(data)
     loaded = schema.load(dumped)
     assert dumped == loaded == data
@@ -49,8 +56,9 @@ def test_round_trip(data, schema):
     ],
 )
 def test_raises(data, schema):
+    """Invalid types raise exceptions in both directions."""
     with pytest.raises(marshmallow.exceptions.ValidationError):
-        dumped = schema.dump(data)
+        schema.dump(data)
 
     with pytest.raises(marshmallow.exceptions.ValidationError):
-        loaded = schema.load(data)
+        schema.load(data)
