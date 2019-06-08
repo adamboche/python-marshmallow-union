@@ -41,7 +41,7 @@ setup(
         ),
         re.sub(":[a-z]+:`~?(.*?)`", r"``\1``", read("CHANGELOG.rst")),
     ),
-    author="akb",
+    author="Adam Boche",
     author_email="2lSJlf2MCi6PIgNTboOp@cordaz.com",
     url="https://github.com/adamboche/python-marshmallow-union",
     packages=find_packages("src"),
