@@ -35,6 +35,7 @@ py==1.8.0                 # via pytest, tox
 pygments==2.4.2
 pylint==2.3.1
 pyparsing==2.4.0          # via packaging
+pytest-sphinx==0.2.2
 pytest==4.6.2
 pyyaml==5.1.1             # via watchdog
 readme-renderer==24.0

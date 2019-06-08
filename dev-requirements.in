@@ -13,3 +13,4 @@ readme-renderer
 pygments
 isort
 mypy
+pytest-sphinx
