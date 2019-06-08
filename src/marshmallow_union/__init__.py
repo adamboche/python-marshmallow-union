@@ -50,4 +50,4 @@ class Union(marshmallow.fields.Field):
         raise marshmallow.exceptions.ValidationError(message=errors, field_name=attr)
 
 
-__version__ = "__version__ = 0.1.3"
+__version__ = "__version__ = 0.1.4"
