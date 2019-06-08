@@ -9,3 +9,4 @@ pylint
 black
 pex
 bump2version
+sphinx_rtd_theme
