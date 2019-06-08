@@ -32,4 +32,3 @@ def test_round_trip_schema(data, schema):
 def test_raises(data, schema):
     with pytest.raises(marshmallow.exceptions.ValidationError):
         loaded = schema.load(data)
-        dumped = schema.dump(loaded)

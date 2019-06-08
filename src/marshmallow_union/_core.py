@@ -13,7 +13,7 @@ class Union(marshmallow.fields.Field):
     def __init__(
         self,
         fields: t.List[marshmallow.fields.Field],
-        reverse_serialize_candidates: bool = True,
+        reverse_serialize_candidates: bool = False,
         *args,
         **kwargs
     ):
