@@ -14,3 +14,4 @@ pygments
 isort
 mypy
 pytest-sphinx
+towncrier
