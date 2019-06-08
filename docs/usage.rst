@@ -29,9 +29,3 @@ To use marshmallow-union in a project
     dumped = schema.dump(loaded)
 
     assert dumped == input_data
-
-
-
-
-.. testoutput::
-   :hide:
