@@ -1,9 +1,10 @@
-marshmallow_union
-=================
+marshmallow\_union package
+==========================
 
-.. testsetup::
-
-    from marshmallow_union import *
+Module contents
+---------------
 
 .. automodule:: marshmallow_union
-    :members:
+   :members:
+   :undoc-members:
+   :show-inheritance:
