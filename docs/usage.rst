@@ -2,7 +2,13 @@
 Usage
 =====
 
-To use marshmallow-union in a project
+To use marshmallow-union in a project import ``marshmallow_union.Union`` and
+pass it a list of ``marshmallow.fields.Field`` instances. When serializing and
+deserializing, each one will be tried in sequence until one succeeds, not
+raising ``marshmallow.exceptions.ValidationError``. If none of them is
+successful, ``marshmallow.exceptions.ValidationError`` is raised.
+
+See the API reference for more details.
 
 .. testcode::
 
