@@ -6,6 +6,7 @@ import os
 
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
     "sphinx_autodoc_typehints",  # Must come *after* sphinx.ext.autodoc.
     "sphinx.ext.autosummary",
     "sphinx.ext.coverage",
