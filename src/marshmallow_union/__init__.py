@@ -1,3 +1,5 @@
+"""Union fields for marshmallow."""
+
 import typing as t
 
 import marshmallow
@@ -26,7 +28,7 @@ class Union(marshmallow.fields.Field):
         self._reverse_serialize_candidates = reverse_serialize_candidates
         super().__init__(*args, **kwargs)
 
-    def serialize(self, attr: str, obj:str, accessor:t.Callable=None, **kwargs):
+    def serialize(self, attr: str, obj: str, accessor: t.Callable = None, **kwargs):
         """Pulls the value for the given key from the object, applies the
         field's formatting and returns the result.
 
@@ -53,7 +55,6 @@ class Union(marshmallow.fields.Field):
                 errors.append(exc.messages)
 
         raise marshmallow.exceptions.ValidationError(message=errors, field_name=attr)
-
 
     def deserialize(self, value, attr=None, data=None, **kwargs):
         """Deserialize ``value``.
