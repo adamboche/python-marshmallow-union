@@ -18,15 +18,15 @@ class Union(marshmallow.fields.Field):
     def __init__(
         self,
         fields: t.List[marshmallow.fields.Field],
-        reverse_serialize_candidates: bool = False,
         *args,
+        reverse_serialize_candidates: bool = False,
         **kwargs
     ):
         self._candidate_fields = fields
         self._reverse_serialize_candidates = reverse_serialize_candidates
         super().__init__(*args, **kwargs)
 
-    def _serialize(self, value, attr, obj, **kwargs):
+    def serialize(self, attr, obj, accessor=None, **kwargs):
         errors = []
 
         fields = self._candidate_fields
@@ -35,18 +35,19 @@ class Union(marshmallow.fields.Field):
 
         for candidate_field in fields:
             try:
-                return candidate_field._serialize(value, attr, obj, **kwargs)
-            except marshmallow.exceptions.ValidationError as e:
-                errors.append(e.messages)
+                return candidate_field.serialize(attr, obj, **kwargs)
+            except marshmallow.exceptions.ValidationError as exc:
+                errors.append(exc.messages)
+
         raise marshmallow.exceptions.ValidationError(message=errors, field_name=attr)
 
-    def _deserialize(self, value, attr, obj, **kwargs):
+    def deserialize(self, value, attr=None, data=None, **kwargs):
         errors = []
         for candidate_field in self._candidate_fields:
             try:
-                return candidate_field._deserialize(value, attr, obj, **kwargs)
-            except marshmallow.exceptions.ValidationError as e:
-                errors.append(e.messages)
+                return candidate_field.deserialize(value, attr, data, **kwargs)
+            except marshmallow.exceptions.ValidationError as exc:
+                errors.append(exc.messages)
         raise marshmallow.exceptions.ValidationError(message=errors, field_name=attr)
 
 
