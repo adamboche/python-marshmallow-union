@@ -6,6 +6,7 @@ import os
 
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx_autodoc_typehints",  # Must come *after* sphinx.ext.autodoc.
     "sphinx.ext.autosummary",
     "sphinx.ext.coverage",
     "sphinx.ext.doctest",
@@ -51,4 +52,3 @@ napoleon_use_rtype = False
 napoleon_use_param = False
 
 autoapi_dirs = ["../src/marshmallow_union"]
-
