@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+"""Configuration for Sphinx docs."""
+
 from __future__ import unicode_literals
 
 import os
