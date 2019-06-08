@@ -32,7 +32,7 @@ except FileNotFoundError:
 
 setup(
     name="marshmallow-union",
-    version="0.1.3",
+    version="version=0.1.4",
     description="Union fields for marshmallow.",
     long_description="%s\n%s"
     % (
