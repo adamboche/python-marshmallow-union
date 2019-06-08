@@ -34,3 +34,4 @@ To use marshmallow-union in a project
 
 
 .. testoutput::
+   :hide:
