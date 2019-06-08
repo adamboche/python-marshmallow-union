@@ -26,7 +26,7 @@ source_suffix = ".rst"
 master_doc = "index"
 project = "marshmallow-union"
 year = "2019"
-author = "akb"
+author = "Adam Boche"
 copyright = "{0}, {1}".format(year, author)
 version = release = "version = release = 0.1.7"
 
