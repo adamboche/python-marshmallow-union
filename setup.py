@@ -32,7 +32,7 @@ except FileNotFoundError:
 
 setup(
     name="marshmallow-union",
-    version="version=0.1.7",
+    version="version=0.1.8",
     description="Union fields for marshmallow.",
     long_description="%s\n%s"
     % (
@@ -41,7 +41,7 @@ setup(
         ),
         re.sub(":[a-z]+:`~?(.*?)`", r"``\1``", read("CHANGELOG.rst")),
     ),
-    author="akb",
+    author="Adam Boche",
     author_email="2lSJlf2MCi6PIgNTboOp@cordaz.com",
     url="https://github.com/adamboche/python-marshmallow-union",
     packages=find_packages("src"),
