@@ -8,6 +8,11 @@ class Union(marshmallow.fields.Field):
     """Field that accepts any one of multiple fields.
 
     Each argument will be tried until one succeeds.
+
+    Args:
+        fields: The list of candidate fields to try.
+        reverse_serialize_candidates: Whether to try the candidates in reverse order when
+           serializing.
     """
 
     def __init__(
@@ -17,11 +22,6 @@ class Union(marshmallow.fields.Field):
         *args,
         **kwargs
     ):
-        """
-        Args:
-            fields: The list of candidate fields to try.
-            reverse_serialize_candidates: Whether to try the candidates in reverse order when serializing.
-        """
         self._candidate_fields = fields
         self._reverse_serialize_candidates = reverse_serialize_candidates
         super().__init__(*args, **kwargs)
