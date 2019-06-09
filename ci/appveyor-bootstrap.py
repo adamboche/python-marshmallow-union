@@ -5,9 +5,11 @@ This is a port of https://github.com/pypa/python-packaging-user-guide/blob/maste
 with various fixes and improvements that just weren't feasible to implement in PowerShell.
 """
 from __future__ import print_function
+
 from os import environ
 from os.path import exists
 from subprocess import check_call
+
 
 try:
     from urllib.request import urlretrieve
