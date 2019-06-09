@@ -31,13 +31,6 @@
         showcontent = true
 
 
-[tool.isort]
-
-force_single_line=true
-lines_after_imports=2
-
-not_skip="__init__.py"
-known_first_party="marshmallow_union"
 [tool.black]
 
 include = '\.pyi?$'
