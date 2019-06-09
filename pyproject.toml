@@ -31,10 +31,21 @@
         showcontent = true
 
 
-[tool.isort]
+[tool.black]
 
-force_single_line=true
-lines_after_imports=2
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.?venv
+  | _build
+  | buck-out
+  | build
+  | dist
 
-not_skip="__init__.py"
-known_first_party="marshmallow_union"
+)/
+'''
