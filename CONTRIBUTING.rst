@@ -70,7 +70,7 @@ For merging, you should:
 
 1. Include passing tests (run ``tox``) [1]_.
 2. Update documentation when there's new API, functionality etc.
-3. Add a note to ``CHANGELOG.rst`` about the changes.
+3. Add a file in ``changelog.d/`` describing the changes. The filename should be ``{id}.{type}.rst``, where ``{id}`` is the number of the GitHub issue or pull request and ``{type}`` is one of ``breaking`` (for breaking changes), ``deprecation`` (for deprecations), or ``change`` (for non-breaking changes). For example, to add a new feature requested in GitHub issue #1234, add a file called ``changelog.d/1234.change.rst`` describing the change.
 4. Add yourself to ``AUTHORS.rst``.
 
 .. [1] If you don't have all the necessary python versions available locally you can rely on Travis - it will
