@@ -38,3 +38,21 @@ lines_after_imports=2
 
 not_skip="__init__.py"
 known_first_party="marshmallow_union"
+[tool.black]
+
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.?venv
+  | _build
+  | buck-out
+  | build
+  | dist
+
+)/
+'''
