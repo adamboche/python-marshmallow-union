@@ -28,15 +28,15 @@ class Union(marshmallow.fields.Field):
         self._reverse_serialize_candidates = reverse_serialize_candidates
         super().__init__(*args, **kwargs)
 
-    def serialize(self, attr: str, obj: str, accessor: t.Callable = None, **kwargs):
+    def _serialize(self, value: t.Any, attr: str, obj: str, **kwargs):
         """Pulls the value for the given key from the object, applies the
         field's formatting and returns the result.
 
 
         Args:
+            value: The value to be serialized.
             attr: The attribute or key to get from the object.
             obj: The object to pull the key from.
-            accessor: Function used to pull values from ``obj``.
             kwargs': Field-specific keyword arguments.
 
         Raises:
@@ -56,7 +56,7 @@ class Union(marshmallow.fields.Field):
 
         raise marshmallow.exceptions.ValidationError(message=errors, field_name=attr)
 
-    def deserialize(self, value, attr=None, data=None, **kwargs):
+    def _deserialize(self, value, attr=None, data=None, **kwargs):
         """Deserialize ``value``.
 
         Args:
@@ -79,4 +79,4 @@ class Union(marshmallow.fields.Field):
         raise marshmallow.exceptions.ValidationError(message=errors, field_name=attr)
 
 
-__version__ = "0.1.10"
+__version__ = "0.1.11"
