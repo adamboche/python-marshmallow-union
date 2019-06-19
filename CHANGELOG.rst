@@ -1,3 +1,17 @@
+0.1.11 (2019-06-19)
+-------------------
+
+
+Changes
+^^^^^^^
+
+- Override the underscore-prefixed methods instead of the plain ones
+  `#22 <https://github.com/adamboche/python-marshmallow-union/issues/22>`_
+
+
+----
+
+
 Changelog
 =========
 
