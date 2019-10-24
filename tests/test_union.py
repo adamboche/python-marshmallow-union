@@ -59,7 +59,7 @@ def test_round_trip(data, schema):
     "data,schema",
     [
         ({"name": "Alice", "number_or_numbers": "twenty-five"}, PersonSchema()),
-        ({"name": "Alice", "number_or_numbers": True}, PersonSchema()),
+        ({"name": "Alice", "number_or_numbers": {"x": 14}}, PersonSchema()),
     ],
 )
 def test_raises(data, schema):

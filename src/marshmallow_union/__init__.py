@@ -3,6 +3,7 @@
 import typing as t
 
 import marshmallow
+import marshmallow.error_store
 import marshmallow.exceptions
 
 
@@ -50,8 +51,8 @@ class Union(marshmallow.fields.Field):
         Raises:
             marshmallow.exceptions.ValidationError: In case of formatting problem
         """
-        errors = []
 
+        error_store = marshmallow.error_store.ErrorStore()
         fields = self._candidate_fields
         if self._reverse_serialize_candidates:
             fields = list(reversed(fields))
@@ -59,12 +60,14 @@ class Union(marshmallow.fields.Field):
         for candidate_field in fields:
 
             try:
-                return candidate_field.serialize(attr, obj, **kwargs)
+                return candidate_field.serialize(
+                    attr, obj, error_store=error_store, **kwargs
+                )
             # pylint: disable=broad-except
             except Exception as exc:
-                errors.append(exc)
+                pass
 
-        raise ExceptionGroup("All serializers raised exceptions.\n", errors)
+        raise ExceptionGroup("All serializers raised exceptions.\n", error_store.errors)
 
     def _deserialize(self, value, attr=None, data=None, **kwargs):
         """Deserialize ``value``.
