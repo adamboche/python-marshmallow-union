@@ -11,10 +11,6 @@
    title_format = "{version} ({project_date})"
    underlines = ["-", "^"]
 
-   [[tool.towncrier.section]]
-       path = ""
-
-
     [[tool.towncrier.type]]
         directory = "breaking"
         name = "Backward-incompatible Changes"

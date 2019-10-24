@@ -3,7 +3,16 @@
 import typing as t
 
 import marshmallow
+import marshmallow.error_store
 import marshmallow.exceptions
+
+
+class MarshmallowUnionException(Exception):
+    """Base exception for marshmallow_union."""
+
+
+class ExceptionGroup(MarshmallowUnionException):
+    """Collection of possibly multiple exceptions."""
 
 
 class Union(marshmallow.fields.Field):
@@ -20,13 +29,12 @@ class Union(marshmallow.fields.Field):
     def __init__(
         self,
         fields: t.List[marshmallow.fields.Field],
-        *args,
         reverse_serialize_candidates: bool = False,
         **kwargs
     ):
         self._candidate_fields = fields
         self._reverse_serialize_candidates = reverse_serialize_candidates
-        super().__init__(*args, **kwargs)
+        super().__init__(**kwargs)
 
     def _serialize(self, value: t.Any, attr: str, obj: str, **kwargs):
         """Pulls the value for the given key from the object, applies the
@@ -42,19 +50,23 @@ class Union(marshmallow.fields.Field):
         Raises:
             marshmallow.exceptions.ValidationError: In case of formatting problem
         """
-        errors = []
 
+        error_store = marshmallow.error_store.ErrorStore()
         fields = self._candidate_fields
         if self._reverse_serialize_candidates:
             fields = list(reversed(fields))
 
         for candidate_field in fields:
-            try:
-                return candidate_field.serialize(attr, obj, **kwargs)
-            except marshmallow.exceptions.ValidationError as exc:
-                errors.append(exc.messages)
 
-        raise marshmallow.exceptions.ValidationError(message=errors, field_name=attr)
+            try:
+                return candidate_field.serialize(
+                    attr, obj, error_store=error_store, **kwargs
+                )
+            # pylint: disable=broad-except
+            except Exception as exc:
+                pass
+
+        raise ExceptionGroup("All serializers raised exceptions.\n", error_store.errors)
 
     def _deserialize(self, value, attr=None, data=None, **kwargs):
         """Deserialize ``value``.
