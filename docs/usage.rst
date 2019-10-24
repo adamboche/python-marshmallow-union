@@ -2,11 +2,16 @@
 Usage
 =====
 
-To use marshmallow-union in a project import ``marshmallow_union.Union`` and
-pass it a list of ``marshmallow.fields.Field`` instances. When serializing and
-deserializing, each one will be tried in sequence until one succeeds, not
-raising ``marshmallow.exceptions.ValidationError``. If none of them is
-successful, ``marshmallow.exceptions.ValidationError`` is raised.
+To use marshmallow-union in a project import ``marshmallow_union.Union`` and pass it a
+list of ``marshmallow.fields.Field`` instances.
+
+When deserializing, each field will be tried in sequence until one succeeds, not raising
+``marshmallow.exceptions.ValidationError``. If none of them is successful,
+``marshmallow.exceptions.ValidationError`` is raised.
+
+When serializing, each field will be tried in sequence until one succeeds, not raising
+*any* exception. If none of them is successful, :class:`marshmallow_union.ExceptionGroup`
+is raised, containing the values of the raised exceptions.
 
 See the API reference for more details.
 

@@ -6,6 +6,14 @@ import marshmallow
 import marshmallow.exceptions
 
 
+class MarshmallowUnionException(Exception):
+    """Base exception for marshmallow_union."""
+
+
+class ExceptionGroup(MarshmallowUnionException):
+    """Collection of possibly multiple exceptions."""
+
+
 class Union(marshmallow.fields.Field):
     """Field that accepts any one of multiple fields.
 
@@ -49,12 +57,13 @@ class Union(marshmallow.fields.Field):
             fields = list(reversed(fields))
 
         for candidate_field in fields:
+
             try:
                 return candidate_field.serialize(attr, obj, **kwargs)
-            except marshmallow.exceptions.ValidationError as exc:
-                errors.append(exc.messages)
+            except Exception as exc:
+                errors.append(exc)
 
-        raise marshmallow.exceptions.ValidationError(message=errors, field_name=attr)
+        raise ExceptionGroup("All serializers raised exceptions.\n", errors)
 
     def _deserialize(self, value, attr=None, data=None, **kwargs):
         """Deserialize ``value``.

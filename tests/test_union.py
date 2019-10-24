@@ -32,12 +32,20 @@ class OtherSchema(marshmallow.Schema):
     )
 
 
+class StrIntSchema(marshmallow.Schema):
+    """Schema with str and int candidates."""
+
+    x = marshmallow_union.Union([marshmallow.fields.Int(), marshmallow.fields.String()])
+
+
 @pytest.mark.parametrize(
     "data, schema",
     [
         ({"name": "Alice", "number_or_numbers": 25}, PersonSchema()),
         ({"name": "Alice", "number_or_numbers": [25, 50]}, PersonSchema()),
         ({"name": "Alice", "number_or_numbers": [25, 50]}, OtherSchema()),
+        ({"x": 5}, StrIntSchema()),
+        ({"x": "hello"}, StrIntSchema()),
     ],
 )
 def test_round_trip(data, schema):
@@ -52,13 +60,12 @@ def test_round_trip(data, schema):
     [
         ({"name": "Alice", "number_or_numbers": "twenty-five"}, PersonSchema()),
         ({"name": "Alice", "number_or_numbers": True}, PersonSchema()),
-        ({"name": "Alice", "number_or_numbers": {}}, PersonSchema()),
     ],
 )
 def test_raises(data, schema):
     """Invalid types raise exceptions in both directions."""
     with pytest.raises(marshmallow.exceptions.ValidationError):
-        schema.dump(data)
-
-    with pytest.raises(marshmallow.exceptions.ValidationError):
         schema.load(data)
+
+    with pytest.raises(marshmallow_union.ExceptionGroup):
+        schema.dump(data)
