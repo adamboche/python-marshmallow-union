@@ -1,3 +1,17 @@
+0.1.11 (2019-10-24)
+-------------------
+
+
+Backward-incompatible Changes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- On serialization, :class:`marshmallow_union.ExceptionGroup` is raised if all candidate fields fail.
+  `#24 <https://github.com/adamboche/python-marshmallow-union/issues/24>`_
+
+
+----
+
+
 0.1.11 (2019-06-19)
 -------------------
 
