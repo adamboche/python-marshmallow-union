@@ -39,7 +39,7 @@ Overview
 
 .. |commits-since| image:: https://img.shields.io/github/commits-since/adamboche/python-marshmallow-union/v0.1.12.svg
     :alt: Commits since latest release
-    :target: https://github.com/adamboche/python-marshmallow-union/compare/v0.1.12...master
+    :target: https://github.com/adamboche/python-marshmallow-union/compare/v0.1.12..master
 
 .. |wheel| image:: https://img.shields.io/pypi/wheel/marshmallow-union.svg
     :alt: PyPI Wheel
