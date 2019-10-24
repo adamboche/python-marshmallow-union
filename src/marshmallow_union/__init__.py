@@ -29,13 +29,12 @@ class Union(marshmallow.fields.Field):
     def __init__(
         self,
         fields: t.List[marshmallow.fields.Field],
-        *args,
         reverse_serialize_candidates: bool = False,
         **kwargs
     ):
         self._candidate_fields = fields
         self._reverse_serialize_candidates = reverse_serialize_candidates
-        super().__init__(*args, **kwargs)
+        super().__init__(**kwargs)
 
     def _serialize(self, value: t.Any, attr: str, obj: str, **kwargs):
         """Pulls the value for the given key from the object, applies the
