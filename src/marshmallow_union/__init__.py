@@ -60,6 +60,7 @@ class Union(marshmallow.fields.Field):
 
             try:
                 return candidate_field.serialize(attr, obj, **kwargs)
+            # pylint: disable=broad-except
             except Exception as exc:
                 errors.append(exc)
 
