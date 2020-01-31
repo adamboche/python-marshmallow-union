@@ -59,18 +59,19 @@ class Union(marshmallow.fields.Field):
         for candidate_field in fields:
 
             try:
-                return candidate_field.serialize(
-                    attr, obj, error_store=error_store, **kwargs
-                )
-            # pylint: disable=broad-except
-            except Exception as exc:
-                if isinstance(exc, TypeError) and attr is obj is None:
-                    try:
+                try:
+                    return candidate_field.serialize(
+                        attr, obj, error_store=error_store, **kwargs
+                    )
+                except TypeError:
+                    if attr is obj is None:  # is a mapping value
                         return candidate_field._serialize(
                             value, attr, obj, **kwargs
                         )
-                    except Exception as exc:
-                        pass
+                    raise
+            # pylint: disable=broad-except
+            except Exception as exc:
+                pass
 
         raise ExceptionGroup("All serializers raised exceptions.\n", error_store.errors)
 
