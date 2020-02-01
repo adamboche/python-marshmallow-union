@@ -70,6 +70,7 @@ class Union(marshmallow.fields.Field):
                     # 'marshmallow', but can be bypassed by passing the known 'value'
                     # directly to '_serialize'
                     if attr is obj is None:
+                        # pylint: disable=protected-access
                         return candidate_field._serialize(
                             value, attr, obj, **kwargs
                         )
