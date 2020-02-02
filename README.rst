@@ -61,6 +61,8 @@ Union fields for marshmallow.
 * Free software: MIT license
 
 
+.. include:: warning.rst
+
 Documentation
 =============
 

@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import os
+import pathlib
 
 
 extensions = [
@@ -55,11 +56,4 @@ napoleon_use_param = True
 autoapi_dirs = ["../src/marshmallow_union"]
 
 
-rst_prolog = """
-.. warning::
-
-   Figuring out the correct field type from an untagged dump is a matter of guesswork and
-   can be error-prone. A more explicit approach like
-   https://github.com/Bachmann1234/marshmallow-polyfield/ is better. This project remains
-   here to avoid breaking existing software.
-"""
+rst_prolog = pathlib.Path(__file__).parent.parent.joinpath("warning.rst").read_text()
