@@ -59,9 +59,22 @@ class Union(marshmallow.fields.Field):
         for candidate_field in fields:
 
             try:
-                return candidate_field.serialize(
-                    attr, obj, error_store=error_store, **kwargs
-                )
+                try:
+                    return candidate_field.serialize(
+                        attr, obj, error_store=error_store, **kwargs
+                    )
+                except TypeError:
+                    # When serialising a mapping (eg dict) value item, 'attr' and 'obj'
+                    # is none (as a dict value is not an attribute of anything). This
+                    # causes issues with the attribute-get methods within
+                    # 'marshmallow', but can be bypassed by passing the known 'value'
+                    # directly to '_serialize'
+                    if attr is obj is None:
+                        # pylint: disable=protected-access
+                        return candidate_field._serialize(
+                            value, attr, obj, **kwargs
+                        )
+                    raise
             # pylint: disable=broad-except
             except Exception as exc:
                 pass

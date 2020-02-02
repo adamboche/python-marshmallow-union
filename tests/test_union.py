@@ -32,6 +32,19 @@ class OtherSchema(marshmallow.Schema):
     )
 
 
+class MappingSchema(marshmallow.Schema):
+    """Schema with union inside mapping."""
+    items = marshmallow.fields.Dict(
+        marshmallow.fields.String(),
+        marshmallow_union.Union(
+            [
+                marshmallow.fields.Integer(),
+                marshmallow.fields.List(marshmallow.fields.Integer()),
+            ],
+        ),
+    )
+
+
 class StrIntSchema(marshmallow.Schema):
     """Schema with str and int candidates."""
 
@@ -46,6 +59,7 @@ class StrIntSchema(marshmallow.Schema):
         ({"name": "Alice", "number_or_numbers": [25, 50]}, OtherSchema()),
         ({"x": 5}, StrIntSchema()),
         ({"x": "hello"}, StrIntSchema()),
+        ({"items": {"a": 42, "b": [17]}}, MappingSchema()),
     ],
 )
 def test_round_trip(data, schema):
@@ -60,6 +74,7 @@ def test_round_trip(data, schema):
     [
         ({"name": "Alice", "number_or_numbers": "twenty-five"}, PersonSchema()),
         ({"name": "Alice", "number_or_numbers": {"x": 14}}, PersonSchema()),
+        ({"items": {"a": 42, "b": "spam"}}, MappingSchema()),
     ],
 )
 def test_raises(data, schema):
