@@ -71,9 +71,7 @@ class Union(marshmallow.fields.Field):
                     # directly to '_serialize'
                     if attr is obj is None:
                         # pylint: disable=protected-access
-                        return candidate_field._serialize(
-                            value, attr, obj, **kwargs
-                        )
+                        return candidate_field._serialize(value, attr, obj, **kwargs)
                     raise
             # pylint: disable=broad-except
             except Exception as exc:

@@ -34,13 +34,14 @@ class OtherSchema(marshmallow.Schema):
 
 class MappingSchema(marshmallow.Schema):
     """Schema with union inside mapping."""
+
     items = marshmallow.fields.Dict(
         marshmallow.fields.String(),
         marshmallow_union.Union(
             [
                 marshmallow.fields.Integer(),
                 marshmallow.fields.List(marshmallow.fields.Integer()),
-            ],
+            ]
         ),
     )
 
