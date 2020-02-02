@@ -2,6 +2,7 @@
 Usage
 =====
 
+
 To use marshmallow-union in a project import ``marshmallow_union.Union`` and pass it a
 list of ``marshmallow.fields.Field`` instances.
 
