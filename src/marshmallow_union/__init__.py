@@ -51,7 +51,7 @@ class Union(marshmallow.fields.Field):
             marshmallow.exceptions.ValidationError: In case of formatting problem
         """
 
-        error_store = marshmallow.error_store.ErrorStore()
+        error_store = kwargs.pop("error_store", marshmallow.error_store.ErrorStore())
         fields = self._candidate_fields
         if self._reverse_serialize_candidates:
             fields = list(reversed(fields))
@@ -71,7 +71,9 @@ class Union(marshmallow.fields.Field):
                     # directly to '_serialize'
                     if attr is obj is None:
                         # pylint: disable=protected-access
-                        return candidate_field._serialize(value, attr, obj, **kwargs)
+                        return candidate_field._serialize(
+                            value, attr, obj, error_store=error_store, **kwargs
+                        )
                     raise
             # pylint: disable=broad-except
             except Exception as exc:
