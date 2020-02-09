@@ -16,6 +16,7 @@ class ExceptionGroup(MarshmallowUnionException):
     def __init__(self, msg: str, errors):
         self.msg = msg
         self.errors = errors
+        super().__init__(msg, errors)
 
 
 class Union(marshmallow.fields.Field):
