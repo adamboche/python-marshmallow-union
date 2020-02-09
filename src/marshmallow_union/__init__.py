@@ -13,6 +13,10 @@ class MarshmallowUnionException(Exception):
 
 class ExceptionGroup(MarshmallowUnionException):
     """Collection of possibly multiple exceptions."""
+    def __init__(self, msg: str, errors):
+        self.msg = msg
+        self.errors = errors
+        super().__init__(msg, errors)
 
 
 class Union(marshmallow.fields.Field):
@@ -51,7 +55,7 @@ class Union(marshmallow.fields.Field):
             marshmallow.exceptions.ValidationError: In case of formatting problem
         """
 
-        error_store = marshmallow.error_store.ErrorStore()
+        error_store = kwargs.pop("error_store", marshmallow.error_store.ErrorStore())
         fields = self._candidate_fields
         if self._reverse_serialize_candidates:
             fields = list(reversed(fields))
@@ -59,23 +63,26 @@ class Union(marshmallow.fields.Field):
         for candidate_field in fields:
 
             try:
-                try:
-                    return candidate_field.serialize(
-                        attr, obj, error_store=error_store, **kwargs
-                    )
-                except TypeError:
-                    # When serialising a mapping (eg dict) value item, 'attr' and 'obj'
-                    # is none (as a dict value is not an attribute of anything). This
-                    # causes issues with the attribute-get methods within
-                    # 'marshmallow', but can be bypassed by passing the known 'value'
-                    # directly to '_serialize'
-                    if attr is obj is None:
+                return candidate_field.serialize(
+                    attr, obj, error_store=error_store, **kwargs
+                )
+            except ValueError as e:
+                error_store.store_error({attr: e})
+            except TypeError as e:
+                error_store.store_error({attr: e})
+                # When serialising a mapping (eg dict) value item, 'attr' and 'obj'
+                # is none (as a dict value is not an attribute of anything). This
+                # causes issues with the attribute-get methods within
+                # 'marshmallow', but can be bypassed by passing the known 'value'
+                # directly to '_serialize'.
+                if attr is obj is None:
+                    try:
                         # pylint: disable=protected-access
-                        return candidate_field._serialize(value, attr, obj, **kwargs)
-                    raise
-            # pylint: disable=broad-except
-            except Exception as exc:
-                pass
+                        return candidate_field._serialize(
+                            value, attr, obj, error_store=error_store, **kwargs
+                        )
+                    except (TypeError, ValueError) as e2:
+                        error_store.store_error({attr: e2})
 
         raise ExceptionGroup("All serializers raised exceptions.\n", error_store.errors)
 
@@ -102,4 +109,4 @@ class Union(marshmallow.fields.Field):
         raise marshmallow.exceptions.ValidationError(message=errors, field_name=attr)
 
 
-__version__ = "0.1.13"
+__version__ = "0.1.14"

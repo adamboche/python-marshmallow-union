@@ -46,8 +46,8 @@ class MappingSchema(marshmallow.Schema):
     )
 
 
-class StrIntSchema(marshmallow.Schema):
-    """Schema with str and int candidates."""
+class IntStrSchema(marshmallow.Schema):
+    """Schema with int and str candidates."""
 
     x = marshmallow_union.Union([marshmallow.fields.Int(), marshmallow.fields.String()])
 
@@ -58,8 +58,8 @@ class StrIntSchema(marshmallow.Schema):
         ({"name": "Alice", "number_or_numbers": 25}, PersonSchema()),
         ({"name": "Alice", "number_or_numbers": [25, 50]}, PersonSchema()),
         ({"name": "Alice", "number_or_numbers": [25, 50]}, OtherSchema()),
-        ({"x": 5}, StrIntSchema()),
-        ({"x": "hello"}, StrIntSchema()),
+        ({"x": 5}, IntStrSchema()),
+        ({"x": "hello"}, IntStrSchema()),
         ({"items": {"a": 42, "b": [17]}}, MappingSchema()),
     ],
 )
@@ -78,10 +78,23 @@ def test_round_trip(data, schema):
         ({"items": {"a": 42, "b": "spam"}}, MappingSchema()),
     ],
 )
-def test_raises(data, schema):
-    """Invalid types raise exceptions in both directions."""
+def test_load_raises(data, schema):
+    """Invalid types raise ValidationError while loading."""
     with pytest.raises(marshmallow.exceptions.ValidationError):
         schema.load(data)
 
-    with pytest.raises(marshmallow_union.ExceptionGroup):
+
+@pytest.mark.parametrize(
+    "data,schema",
+    [
+        ({"name": "Alice", "number_or_numbers": "twenty-five"}, PersonSchema()),
+        ({"name": "Alice", "number_or_numbers": {"x": 14}}, PersonSchema()),
+        ({"items": {"a": 42, "b": "spam"}}, MappingSchema()),
+    ],
+)
+def test_dump_raises(data, schema):
+    """Invalid types raise ExceptionGroup while loading."""
+    try:
         schema.dump(data)
+    except marshmallow_union.ExceptionGroup as e:
+        assert e.errors
