@@ -13,6 +13,9 @@ class MarshmallowUnionException(Exception):
 
 class ExceptionGroup(MarshmallowUnionException):
     """Collection of possibly multiple exceptions."""
+    def __init__(self, msg: str, errors):
+        self.msg = msg
+        self.errors = errors
 
 
 class Union(marshmallow.fields.Field):
@@ -59,25 +62,26 @@ class Union(marshmallow.fields.Field):
         for candidate_field in fields:
 
             try:
-                try:
-                    return candidate_field.serialize(
-                        attr, obj, error_store=error_store, **kwargs
-                    )
-                except TypeError:
-                    # When serialising a mapping (eg dict) value item, 'attr' and 'obj'
-                    # is none (as a dict value is not an attribute of anything). This
-                    # causes issues with the attribute-get methods within
-                    # 'marshmallow', but can be bypassed by passing the known 'value'
-                    # directly to '_serialize'
-                    if attr is obj is None:
+                return candidate_field.serialize(
+                    attr, obj, error_store=error_store, **kwargs
+                )
+            except ValueError as e:
+                error_store.store_error({attr: e})
+            except TypeError as e:
+                error_store.store_error({attr: e})
+                # When serialising a mapping (eg dict) value item, 'attr' and 'obj'
+                # is none (as a dict value is not an attribute of anything). This
+                # causes issues with the attribute-get methods within
+                # 'marshmallow', but can be bypassed by passing the known 'value'
+                # directly to '_serialize'.
+                if attr is obj is None:
+                    try:
                         # pylint: disable=protected-access
                         return candidate_field._serialize(
                             value, attr, obj, error_store=error_store, **kwargs
                         )
-                    raise
-            # pylint: disable=broad-except
-            except Exception as exc:
-                pass
+                    except (TypeError, ValueError) as e2:
+                        error_store.store_error({attr: e2})
 
         raise ExceptionGroup("All serializers raised exceptions.\n", error_store.errors)
 
