@@ -109,4 +109,4 @@ class Union(marshmallow.fields.Field):
         raise marshmallow.exceptions.ValidationError(message=errors, field_name=attr)
 
 
-__version__ = "0.1.13"
+__version__ = "0.1.14"
