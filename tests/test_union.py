@@ -52,6 +52,14 @@ class IntStrSchema(marshmallow.Schema):
     x = marshmallow_union.Union([marshmallow.fields.Int(), marshmallow.fields.String()])
 
 
+class ListUnionSchema(marshmallow.Schema):
+    """Schema with a list of unions."""
+
+    l = marshmallow.fields.List(
+        marshmallow_union.Union([marshmallow.fields.Int(), marshmallow.fields.String()])
+    )
+
+
 @pytest.mark.parametrize(
     "data, schema",
     [
@@ -59,6 +67,7 @@ class IntStrSchema(marshmallow.Schema):
         ({"name": "Alice", "number_or_numbers": [25, 50]}, PersonSchema()),
         ({"name": "Alice", "number_or_numbers": [25, 50]}, OtherSchema()),
         ({"x": 5}, IntStrSchema()),
+        ({"l": ["h", 5, "n", 1]}, ListUnionSchema()),
         ({"x": "hello"}, IntStrSchema()),
         ({"items": {"a": 42, "b": [17]}}, MappingSchema()),
     ],
