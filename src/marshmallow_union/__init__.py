@@ -13,6 +13,7 @@ class MarshmallowUnionException(Exception):
 
 class ExceptionGroup(MarshmallowUnionException):
     """Collection of possibly multiple exceptions."""
+
     def __init__(self, msg: str, errors):
         self.msg = msg
         self.errors = errors
@@ -63,8 +64,8 @@ class Union(marshmallow.fields.Field):
         for candidate_field in fields:
 
             try:
-                return candidate_field.serialize(
-                    attr, obj, error_store=error_store, **kwargs
+                return candidate_field._serialize(
+                    value, attr, obj, error_store=error_store, **kwargs
                 )
             except ValueError as e:
                 error_store.store_error({attr: e})
