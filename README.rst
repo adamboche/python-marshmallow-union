@@ -64,10 +64,16 @@ Union fields for marshmallow.
 Warning
 ===========
 
-   Figuring out the correct field type from an untagged dump is a matter of guesswork and
-   can be error-prone. A more explicit approach like
-   https://github.com/Bachmann1234/marshmallow-polyfield/ is better. This project remains
-   here to avoid breaking existing software.
+   This library works by trying a list of fields one by one, and (de)serializing with the first one not to raise an error.
+   The type of the values is not taken into account, so if one of the fields in the union accepts values of an unexpected type,
+   they will be used for serialization. This can lead to a surprising behavior, because :
+   
+   .. code-block:: python
+   
+       u = Union(fields=[fields.Integer(), fields.String()]) # the Integer field accepts string representations of integers
+       type(u.deserialize('0')) # -> int
+       
+   If you want to have precise control of which field will be used for which value, you can use `marshmallow-polyfield <https://github.com/Bachmann1234/marshmallow-polyfield/>`_ instead of this library.
 
 
 
