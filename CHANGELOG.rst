@@ -4,7 +4,7 @@
 Changes
 ^^^^^^^
 
-- Fix `#32 <https://github.com/adamboche/python-marshmallow-union/issues/32>`_ : Never ignore the value passed to `_serialize`. Notably, this fixes the serialization of lists of unions, such as :code:`List(Union([Int(), String()]))
+- Fix `#32 <https://github.com/adamboche/python-marshmallow-union/issues/32>`_ : Never ignore the value passed to `_serialize`. Notably, this fixes the serialization of lists of unions, such as :code:`List(Union([Int(), String()]))`
 
 0.1.12 (2019-10-24)
 -------------------
