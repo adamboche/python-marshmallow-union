@@ -4,56 +4,145 @@
 #
 #    pip-compile --output-file=dev-requirements.txt dev-requirements.in
 #
-ansicolors==1.0.2         # via cuvner
-appdirs==1.4.3            # via black
-argh==0.26.2              # via watchdog
-astroid==2.2.5            # via pylint
-atomicwrites==1.3.0       # via pytest
-attrs==19.1.0             # via black, pytest
-black==19.3b0             # via -r dev-requirements.in
-bleach==3.1.4             # via readme-renderer
-bump2version==0.5.10      # via -r dev-requirements.in
-check-manifest==0.39      # via -r dev-requirements.in
-click==7.0                # via black, cuvner, towncrier
-coverage==4.5.3           # via -r dev-requirements.in, cuvner
-cuvner==18.0.1            # via -r dev-requirements.in
-docutils==0.14            # via -r dev-requirements.in, readme-renderer
-filelock==3.0.12          # via tox
-importlib-metadata==0.17  # via pluggy, pytest
-incremental==17.5.0       # via cuvner, towncrier
-isort==4.3.20             # via -r dev-requirements.in, pylint
-jinja2==2.10.1            # via towncrier
-lazy-object-proxy==1.4.1  # via astroid
-markupsafe==1.1.1         # via jinja2
-mccabe==0.6.1             # via pylint
-more-itertools==7.0.0     # via pytest
-mypy-extensions==0.4.1    # via mypy
-mypy==0.701               # via -r dev-requirements.in
-packaging==19.0           # via pytest
-pathtools==0.1.2          # via watchdog
-pex==1.6.7                # via -r dev-requirements.in
-pluggy==0.12.0            # via pytest, tox
-py==1.8.0                 # via pytest, tox
-pygments==2.4.2           # via -r dev-requirements.in, cuvner, readme-renderer
-pylint==2.3.1             # via -r dev-requirements.in
-pyparsing==2.4.0          # via packaging
-pytest-sphinx==0.2.2      # via -r dev-requirements.in
-pytest==4.6.2             # via -r dev-requirements.in, pytest-sphinx
-pyyaml==5.1.1             # via watchdog
-readme-renderer==24.0     # via -r dev-requirements.in
-six==1.12.0               # via astroid, bleach, cuvner, packaging, pytest, readme-renderer, tox
-toml==0.10.0              # via black, check-manifest, towncrier, tox
-towncrier==19.2.0         # via -r dev-requirements.in
-tox==3.12.1               # via -r dev-requirements.in
-typed-ast==1.3.5          # via astroid, mypy
-unidiff==0.5.5            # via cuvner
-versioneer==0.18          # via -r dev-requirements.in
-virtualenv==16.6.0        # via tox
-watchdog==0.9.0           # via cuvner
-wcwidth==0.1.7            # via pytest
-webencodings==0.5.1       # via bleach
-wrapt==1.11.1             # via astroid
-zipp==0.5.1               # via importlib-metadata
+ansicolors==1.0.2
+    # via cuvner
+appdirs==1.4.3
+    # via black
+argh==0.26.2
+    # via watchdog
+astroid==2.2.5
+    # via pylint
+atomicwrites==1.3.0
+    # via pytest
+attrs==19.1.0
+    # via
+    #   black
+    #   pytest
+black==19.3b0
+    # via -r dev-requirements.in
+bleach==3.3.0
+    # via readme-renderer
+bump2version==0.5.10
+    # via -r dev-requirements.in
+check-manifest==0.39
+    # via -r dev-requirements.in
+click==7.0
+    # via
+    #   black
+    #   cuvner
+    #   towncrier
+coverage==4.5.3
+    # via
+    #   -r dev-requirements.in
+    #   cuvner
+cuvner==18.0.1
+    # via -r dev-requirements.in
+docutils==0.14
+    # via
+    #   -r dev-requirements.in
+    #   readme-renderer
+filelock==3.0.12
+    # via tox
+importlib-metadata==0.17
+    # via
+    #   pluggy
+    #   pytest
+incremental==17.5.0
+    # via
+    #   cuvner
+    #   towncrier
+isort==4.3.20
+    # via
+    #   -r dev-requirements.in
+    #   pylint
+jinja2==2.10.1
+    # via towncrier
+lazy-object-proxy==1.4.1
+    # via astroid
+markupsafe==1.1.1
+    # via jinja2
+mccabe==0.6.1
+    # via pylint
+more-itertools==7.0.0
+    # via pytest
+mypy-extensions==0.4.1
+    # via mypy
+mypy==0.701
+    # via -r dev-requirements.in
+packaging==19.0
+    # via
+    #   bleach
+    #   pytest
+pathtools==0.1.2
+    # via watchdog
+pex==1.6.7
+    # via -r dev-requirements.in
+pluggy==0.12.0
+    # via
+    #   pytest
+    #   tox
+py==1.8.0
+    # via
+    #   pytest
+    #   tox
+pygments==2.4.2
+    # via
+    #   -r dev-requirements.in
+    #   cuvner
+    #   readme-renderer
+pylint==2.3.1
+    # via -r dev-requirements.in
+pyparsing==2.4.0
+    # via packaging
+pytest-sphinx==0.2.2
+    # via -r dev-requirements.in
+pytest==4.6.2
+    # via
+    #   -r dev-requirements.in
+    #   pytest-sphinx
+pyyaml==5.1.1
+    # via watchdog
+readme-renderer==24.0
+    # via -r dev-requirements.in
+six==1.12.0
+    # via
+    #   astroid
+    #   bleach
+    #   cuvner
+    #   packaging
+    #   pytest
+    #   readme-renderer
+    #   tox
+toml==0.10.0
+    # via
+    #   black
+    #   check-manifest
+    #   towncrier
+    #   tox
+towncrier==19.2.0
+    # via -r dev-requirements.in
+tox==3.12.1
+    # via -r dev-requirements.in
+typed-ast==1.3.5
+    # via
+    #   astroid
+    #   mypy
+unidiff==0.5.5
+    # via cuvner
+versioneer==0.18
+    # via -r dev-requirements.in
+virtualenv==16.6.0
+    # via tox
+watchdog==0.9.0
+    # via cuvner
+wcwidth==0.1.7
+    # via pytest
+webencodings==0.5.1
+    # via bleach
+wrapt==1.11.1
+    # via astroid
+zipp==0.5.1
+    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
