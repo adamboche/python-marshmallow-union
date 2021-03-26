@@ -100,7 +100,7 @@ pytest==4.6.2
     # via
     #   -r dev-requirements.in
     #   pytest-sphinx
-pyyaml==5.1.1
+pyyaml==5.4
     # via watchdog
 readme-renderer==24.0
     # via -r dev-requirements.in
