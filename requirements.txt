@@ -4,4 +4,4 @@
 #
 #    pip-compile --output-file=requirements.txt requirements.in
 #
-marshmallow==3.2.1
+marshmallow==3.22

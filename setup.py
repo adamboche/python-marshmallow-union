@@ -32,7 +32,7 @@ except FileNotFoundError:
 
 setup(
     name="marshmallow-union",
-    version="0.1.15",
+    version="0.1.16",
     description="Union fields for marshmallow.",
     long_description="%s\n%s"
     % (
@@ -59,8 +59,10 @@ setup(
         "Operating System :: Microsoft :: Windows",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
         # uncomment if you test on these interpreters:
